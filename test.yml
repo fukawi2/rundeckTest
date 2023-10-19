@@ -1,2 +1,28 @@
-- name: foo
-  description: this is a job in yml
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: 3c0b231c-b00c-4e91-b03e-a922aa68c43f
+  loglevel: INFO
+  name: Check NTP Status
+  nodeFilterEditable: true
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '8'
+    filter: .*
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: null
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - description: chrony sources
+      exec: /usr/bin/chronyc sources
+    - description: chrony tracking status
+      exec: /usr/bin/chronyc tracking
+    keepgoing: false
+    strategy: parallel
+  uuid: 3c0b231c-b00c-4e91-b03e-a922aa68c43f
